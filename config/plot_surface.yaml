@@ -1,0 +1,36 @@
+seed: 123
+
+data_root: ./data
+save_dir: ./run
+
+dir_file: direction.h5
+surf_file: surface.h5
+
+model_name: vovnet
+model_file: ./weight/model_200.pth
+model:
+  planes: [[128, 64, 128],
+           [128, 80, 256],
+           [256, 96, 384],
+           [384, 112, 512]]
+  layers: [1, 1, 1, 1]
+  num_classes: 100
+
+
+x: '-1:1:51'
+y: '-1:1:51'
+xnorm: filter # filter | layer | weight
+ynorm: filter # filter | layer | weight
+dir_type: weights # weights | states (including BN's running_mean/var)
+xignore: biasbn
+yignore: biasbn
+same_dir: False
+
+vmax: 10
+vmin: 0.1
+vlevel: 0.5
+
+
+batch_size: 128
+num_workers: 4
+device: mps
