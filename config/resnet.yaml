@@ -1,0 +1,34 @@
+seed: 123
+
+data_root: ./data
+# dataset name (cifar10, cifar100)
+dataset: cifar100
+
+# model
+model: 
+  block_type: basic # basic, bottleneck
+  num_channels: [32, 64, 128, 256]
+  num_blocks: [3, 4, 6, 3]
+  num_classes: 100
+
+# training
+training:
+  device: mps
+  # dataloader
+  batch_size: 128
+  num_workers: 4
+  # optimizer
+  optimizer: Adam # SGD, Adam
+  lr: 0.001
+  momentum: 0.9
+  weight_decay: 0.0001
+  # training loop
+  epochs: 200
+  
+
+# path
+save:
+  save_dir: ./run
+  log_dir: logs
+  model_save_freq: 5
+  model_dir: checkpoints
